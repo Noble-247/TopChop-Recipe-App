@@ -8,9 +8,15 @@ body {
   font-family: "Open Sans", sans-serif !important;
 }
 
+/* Font-Awesome */
+.fa-1x {
+  font-size: 40px;
+}
+
 .text-slanted {
   font-family: "Courgette", cursive !important;
 }
+
 .text-orange {
   color: #f15025;
 }

@@ -1,18 +1,28 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Home from "./components/pages/Home";
+import Recipes from "./components/pages/Recipes";
+import SingleRecipes from "./components/pages/SingleRecipe";
+import ErrorPage from "./components/pages/ErrorPage";
+import NavBar from "./components/navigation/NavBar";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Hello World</h1>
-        <p>
-          <em>
-            <strong>Welcome to my RECIPE APP Tutorial</strong>
-          </em>
-        </p>
-      </div>
+      <Router>
+        <main>
+          {/* Navbar */}
+          <NavBar />
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/recipes' exact component={Recipes} />
+            <Route path='/recipes/:id' component={SingleRecipes} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </main>
+      </Router>
     );
   }
 }
