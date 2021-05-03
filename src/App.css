@@ -8,19 +8,32 @@ body {
   font-family: "Open Sans", sans-serif !important;
 }
 
-/* Font-Awesome */
-.fa-1x {
-  font-size: 40px;
-}
-
 .text-slanted {
   font-family: "Courgette", cursive !important;
 }
-
 .text-orange {
   color: #f15025;
 }
 
 .letter-spacing {
   letter-spacing: 0.5rem;
+}
+
+/* Navigation, Font-Awesome */
+.fa-1x {
+  font-size: 40px;
+}
+
+.logo-text {
+  font-size: 25px;
+}
+
+/* Banner */
+.banner-hero {
+  min-height: calc(100vh - 56px);
+  background: linear-gradient(rgba(241, 81, 37, 0.3), rgba(241, 81, 37, 0.3)),
+    url("./img/defaultBg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
