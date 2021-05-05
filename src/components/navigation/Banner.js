@@ -19,7 +19,7 @@ function Banner({ children, title, styleClass }) {
 
 Banner.defaultProps = {
   title: "default title",
-  styleClass: "banner-hero",
+  styleClass: "default-banner",
 };
 
 export default Banner;

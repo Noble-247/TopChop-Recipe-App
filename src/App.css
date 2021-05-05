@@ -29,10 +29,19 @@ body {
 }
 
 /* Banner */
-.banner-hero {
+.default-banner {
   min-height: calc(100vh - 56px);
   background: linear-gradient(rgba(241, 81, 37, 0.3), rgba(241, 81, 37, 0.3)),
     url("./img/defaultBg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.error-banner {
+  min-height: calc(100vh - 56px);
+  background: linear-gradient(rgba(241, 81, 37, 0.3), rgba(241, 81, 37, 0.3)),
+    url("./img/errorBg.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
