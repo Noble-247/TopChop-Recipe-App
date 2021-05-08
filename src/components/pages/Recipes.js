@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import Search from "../utilitie_components/Search";
 
 class Recipes extends Component {
   render() {
     return (
       <div className='container'>
-        <h4>Hello from recipes page</h4>
+        <small>Hello from recipes page</small>
+        <Search />
       </div>
     );
   }

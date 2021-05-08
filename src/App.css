@@ -15,6 +15,10 @@ body {
   color: #f15025;
 }
 
+.bg-orange {
+  background-color: #f15025;
+}
+
 .letter-spacing {
   letter-spacing: 0.5rem;
 }
