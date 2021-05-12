@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Home from "./components/pages/Home";
 import Recipes from "./components/pages/Recipes";
-import SingleRecipes from "./components/pages/SingleRecipe";
+import SingleRecipesDetails from "./components/pages/SingleRecipeDetails";
 import ErrorPage from "./components/pages/ErrorPage";
 import NavBar from "./components/navigation/NavBar";
 
@@ -18,7 +18,7 @@ class App extends Component {
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/recipes' exact component={Recipes} />
-            <Route path='/recipes/:id' component={SingleRecipes} />
+            <Route path='/recipes/:id' component={SingleRecipesDetails} />
             <Route path='*' component={ErrorPage} />
           </Switch>
         </main>

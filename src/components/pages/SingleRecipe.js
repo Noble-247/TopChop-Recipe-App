@@ -1,10 +1,38 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class SingleRecipe extends Component {
   render() {
+    const { name, imageURL, originalUrl } = this.props.recipe;
     return (
-      <div className='container'>
-        <h4>Hello from single recipes page</h4>
+      <div className='col-10 mx-auto col-md-6 col-lg-4 my-3'>
+        <div className='card' style={{ height: "100%" }}>
+          <img
+            src={imageURL}
+            style={{ height: "14rem" }}
+            className='card-img-top'
+            alt='recipe'
+          />
+          <div className='card-body text-capitalize'>
+            <h6>{name}</h6>
+          </div>
+          <div className='card-footer'>
+            <Link
+              to={`/recipes/${name}`}
+              className='btn btn-block btn-dark text-capitalize'
+            >
+              recipe details
+            </Link>
+            <a
+              href={originalUrl}
+              className='btn btn-block bg-orange mx-auto text-capitalize text-white'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              recipe url
+            </a>
+          </div>
+        </div>
       </div>
     );
   }
