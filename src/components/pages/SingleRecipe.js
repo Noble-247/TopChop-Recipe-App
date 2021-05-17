@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 class SingleRecipe extends Component {
   render() {
-    const { name, imageURL, originalUrl } = this.props.recipe;
+    const { id, name, imageURL, originalUrl } = this.props.recipe;
     return (
       <div className='col-10 mx-auto col-md-6 col-lg-4 my-3'>
         <div className='card' style={{ height: "100%" }}>
@@ -18,7 +18,7 @@ class SingleRecipe extends Component {
           </div>
           <div className='card-footer'>
             <Link
-              to={`/recipes/${name}`}
+              to={`/recipes/${id}`}
               className='btn btn-block btn-dark text-capitalize'
             >
               recipe details
