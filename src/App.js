@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Home from "./components/pages/Home";
 import Recipes from "./components/pages/Recipes";
-import SingleRecipesDetails from "./components/pages/SingleRecipeDetails";
+import SingleRecipesDetails from "./components/pages/SingleRecipesDetails";
 import ErrorPage from "./components/pages/ErrorPage";
 import NavBar from "./components/navigation/NavBar";
 
