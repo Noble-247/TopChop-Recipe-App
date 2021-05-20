@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Search from "../utilitie_components/Search";
 import RecipeList from "./RecipeList";
 import axios from "axios";
+import Footer from "../navigation/Footer";
+import Sidebar from "../navigation/Sidebar";
 
 class Recipes extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class Recipes extends Component {
     event.preventDefault();
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     // this.setState({ loading: true });
     axios
       .get("https://a.nacapi.com/recipes")
@@ -62,11 +64,14 @@ class Recipes extends Component {
         )}
         {this.state.recipes && (
           <div className='container my-4'>
-            <RecipeList
-              recipes={this.state.recipes}
-              errorMessage={this.state.errorMessage}
-              loading={this.state.loading}
-            />
+            <div className='row'>
+              <div className='col-sm-12 col-md-9'>
+                <RecipeList recipes={this.state.recipes} />
+              </div>
+              <div className='col-sm-12 col-md-3 py-3'>
+                <Sidebar />
+              </div>
+            </div>
           </div>
         )}
         {this.state.errorMessage && (
@@ -76,6 +81,9 @@ class Recipes extends Component {
             </h2>
           </div>
         )}
+        <div className='footer-section'>
+          <Footer />
+        </div>
       </React.Fragment>
     );
   }
