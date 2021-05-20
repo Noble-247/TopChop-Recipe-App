@@ -68,7 +68,7 @@ class Recipes extends Component {
               <div className='col-sm-12 col-md-9'>
                 <RecipeList recipes={this.state.recipes} />
               </div>
-              <div className='col-sm-12 col-md-3 py-3'>
+              <div className='col-sm-12 col-md-3 py-3 mt-5'>
                 <Sidebar />
               </div>
             </div>
