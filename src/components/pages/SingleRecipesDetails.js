@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Footer from "../navigation/Footer";
+import Sidebar from "../navigation/Sidebar";
 
 class SingleRecipesDetails extends Component {
   constructor(props) {
@@ -40,12 +42,12 @@ class SingleRecipesDetails extends Component {
           },
           errorMessage: "",
         });
-        console.log(response.data.name);
-        console.log(response.data.ingredients);
-        console.log(response.data.steps);
-        console.log(response.data.timers);
-        console.log(response.data.imageURL);
-        console.log(response.data.originalURL);
+        // console.log(response.data.name);
+        // console.log(response.data.ingredients);
+        // console.log(response.data.steps);
+        // console.log(response.data.timers);
+        // console.log(response.data.imageURL);
+        // console.log(response.data.originalURL);
       })
       .catch((error) => {
         console.log(error);
@@ -90,12 +92,12 @@ class SingleRecipesDetails extends Component {
                   style={{ maxHeight: "30rem" }}
                   alt='recipe'
                 />
-                <h5 className='text-uppercase text-slanted mt-2 text-orange'>
+                <h5 className='text-uppercase text-slanted mt-3 text-orange'>
                   {name}
                 </h5>
               </div>
 
-              <div className='col-10 mx-auto col-md-4'>
+              <div className='col-10 mx-auto col-md-5'>
                 <a
                   href={originalURL}
                   target='_blank'
@@ -114,8 +116,6 @@ class SingleRecipesDetails extends Component {
                     );
                   })}
                 </ul>
-              </div>
-              <div className='col-10 mx-auto col-md-4'>
                 <ul className='list-group mt-4'>
                   <h4 className='mt-1 mb-4'>Steps</h4>
                   {steps.map((item, index) => {
@@ -127,6 +127,9 @@ class SingleRecipesDetails extends Component {
                   })}
                 </ul>
               </div>
+              <div className='col-10 mx-auto col-md-3 mt-5 pt-5'>
+                <Sidebar />
+              </div>
             </div>
           </div>
         )}
@@ -137,6 +140,9 @@ class SingleRecipesDetails extends Component {
             </h2>
           </div>
         )}
+        <div className='footer-section'>
+          <Footer />
+        </div>
       </React.Fragment>
     );
   }
