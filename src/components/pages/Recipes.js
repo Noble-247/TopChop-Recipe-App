@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Search from "../utilitie_components/Search";
+import Search from "../utilities_components/Search";
 import RecipeList from "./RecipeList";
 import axios from "axios";
 import Footer from "../navigation/Footer";
@@ -25,10 +25,31 @@ class Recipes extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { recipes, search } = this.state;
+    /*  const filteredData = recipes.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(search.toLowerCase());
+    })
+    const filterError = "sorry, your search did not return any result";
+
+    if (search === filteredData) {
+      this.setState({recipes: filteredData})
+    } else {
+      this.setState({recipes: filterError})
+    }
+
+    console.log(recipes) */
+
+    const filteredData = recipes.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(search.toLowerCase());
+    });
+
+    this.setState({
+      recipes: filteredData,
+      search: "",
+    });
   };
 
-  componentDidMount() {
-    // this.setState({ loading: true });
+  fetchRecipes = () => {
     axios
       .get("https://a.nacapi.com/recipes")
       .then((response) => {
@@ -42,6 +63,11 @@ class Recipes extends Component {
           errorMessage: error.message,
         });
       });
+  };
+
+  componentDidMount() {
+    // this.setState({ loading: true });
+    this.fetchRecipes();
   }
 
   render() {
@@ -90,3 +116,9 @@ class Recipes extends Component {
 }
 
 export default Recipes;
+
+/* if (recipes.length === 0) {
+      this.setState({
+        searchError: "sorry, your search did not return any result",
+      });
+    } else { }*/
