@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Search extends Component {
   render() {
-    const { handleChange, handleSubmit, search } = this.props;
+    const { handleChange, handleSubmit, fetchRecipes, search } = this.props;
     return (
       <div className='container'>
         <div className='row'>
@@ -13,7 +14,10 @@ class Search extends Component {
             </h1>
             <form className='mt-4'>
               <label htmlFor='search' className='text-capitalize'>
-                Types Recipes Seperated by Commas
+                <strong>
+                  Enter the recipe name to get a target recipe <br />
+                  Click back to recipes list to return to the main recipes list
+                </strong>
               </label>
               <div className='input-group'>
                 <input
@@ -21,7 +25,7 @@ class Search extends Component {
                   name='search'
                   id='search'
                   className='form-control'
-                  placeholder='chicken,onion,carrots'
+                  placeholder='Enter the recipe name eg Strawberry Toast'
                   value={search}
                   onChange={handleChange}
                 />
@@ -33,6 +37,15 @@ class Search extends Component {
                   >
                     <i className='fas fa-search'></i>
                   </button>
+                </div>
+                <div className='input-group-append'>
+                  <Link
+                    to='/recipes'
+                    className='btn bg-dark text-white text-capitalize'
+                    onClick={fetchRecipes}
+                  >
+                    back to recipes list
+                  </Link>
                 </div>
               </div>
             </form>
