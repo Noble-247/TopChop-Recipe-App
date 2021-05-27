@@ -13,6 +13,7 @@ class Recipes extends Component {
       recipes: [],
       errorMessage: "",
       search: "",
+      searchError: "",
       loading: true,
     };
   }
@@ -26,25 +27,13 @@ class Recipes extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { recipes, search } = this.state;
-    /*  const filteredData = recipes.filter((recipe) => {
-      return recipe.name.toLowerCase().includes(search.toLowerCase());
-    })
-    const filterError = "sorry, your search did not return any result";
-
-    if (search === filteredData) {
-      this.setState({recipes: filteredData})
-    } else {
-      this.setState({recipes: filterError})
-    }
-
-    console.log(recipes) */
 
     const filteredData = recipes.filter((recipe) => {
       return recipe.name.toLowerCase().includes(search.toLowerCase());
     });
 
     this.setState({
-      recipes: filteredData,
+      recipes: filteredData, //run the get request again?
       search: "",
     });
   };
@@ -54,7 +43,14 @@ class Recipes extends Component {
       .get("https://a.nacapi.com/recipes")
       .then((response) => {
         console.log(response);
-        this.setState({ recipes: response.data, loading: false });
+        console.log(response.data.length);
+        if (response.data.length === 0) {
+          this.setState({
+            searchError: "Sorry, but your search did not return any result",
+          });
+        } else {
+          this.setState({ recipes: response.data, loading: false });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -79,6 +75,7 @@ class Recipes extends Component {
             search={this.state.search}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            fetchRecipes={this.fetchRecipes}
           />
         </div>
         {this.state.loading && (
@@ -107,6 +104,13 @@ class Recipes extends Component {
             </h2>
           </div>
         )}
+        {this.state.searchError && (
+          <div className='container my-5'>
+            <h2 className='text-danger text-center text-uppercase'>
+              {this.state.searchError}
+            </h2>
+          </div>
+        )}
         <div className='footer-section'>
           <Footer />
         </div>
@@ -116,9 +120,3 @@ class Recipes extends Component {
 }
 
 export default Recipes;
-
-/* if (recipes.length === 0) {
-      this.setState({
-        searchError: "sorry, your search did not return any result",
-      });
-    } else { }*/
