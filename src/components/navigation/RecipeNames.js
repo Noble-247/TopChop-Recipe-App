@@ -21,6 +21,10 @@ class RecipeNames extends Component {
       })
       .catch((error) => {
         console.log(error);
+        this.setState({
+          errorMessage: "Error: could not popular recipes!",
+          loading: "",
+        });
       });
   }
 
@@ -38,6 +42,7 @@ class RecipeNames extends Component {
               <RecipeNameList recipeNames={this.state.recipeNames} />
             </div>
           )}
+          {this.state.errorMessage && <div>{this.state.errorMessage}</div>}
         </div>
       </React.Fragment>
     );
