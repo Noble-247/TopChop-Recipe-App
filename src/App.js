@@ -20,6 +20,7 @@ class App extends Component {
             <Route path='/recipes' exact component={Recipes} />
             <Route path='/recipes/:id' component={SingleRecipesDetails} />
             <Route path='*' component={ErrorPage} />
+            <Route path='/recipes/*' component={ErrorPage} />
           </Switch>
         </main>
       </Router>
