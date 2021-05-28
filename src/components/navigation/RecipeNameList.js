@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import SingleRecipeName from "./SingleRecipeName";
+import PropTypes from "prop-types";
 
 class RecipeNameList extends Component {
+  static propTypes = {
+    recipeNames: PropTypes.array.isRequired,
+  };
+
   render() {
     const { recipeNames } = this.props;
     return (
