@@ -9,7 +9,7 @@ class Footer extends Component {
           <br />
           Designed by {""}
           <a
-            href='http://https://noble-247.github.io/Emmanuel'
+            href='https://noble-247.github.io/Emmanuel'
             target='_blank'
             rel='noopener noreferrer'
             className='text-orange'
