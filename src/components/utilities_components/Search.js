@@ -53,7 +53,7 @@ class Search extends Component {
                   className='btn bg-dark btn-block text-white text-capitalize'
                   onClick={fetchRecipes}
                 >
-                  Click here to return to the recipes list after viweing search
+                  Click here to return to the recipes list after viewing search
                   results
                 </Link>
               </div>
