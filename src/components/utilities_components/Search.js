@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Search extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    fetchRecipes: PropTypes.func.isRequired,
+    search: PropTypes.string.isRequired,
+  };
+
   render() {
     const { handleChange, handleSubmit, fetchRecipes, search } = this.props;
     return (
@@ -38,15 +46,16 @@ class Search extends Component {
                     <i className='fas fa-search'></i>
                   </button>
                 </div>
-                <div className='input-group-append'>
-                  <Link
-                    to='/recipes'
-                    className='btn bg-dark text-white text-capitalize'
-                    onClick={fetchRecipes}
-                  >
-                    back to recipes list
-                  </Link>
-                </div>
+              </div>
+              <div>
+                <Link
+                  to='/recipes'
+                  className='btn bg-dark btn-block text-white text-capitalize'
+                  onClick={fetchRecipes}
+                >
+                  Click here to return to the recipes list after viweing search
+                  results
+                </Link>
               </div>
             </form>
           </div>
