@@ -50,3 +50,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 550px) {
+  .display-3 {
+    font-size: 3rem !important;
+  }
+}
