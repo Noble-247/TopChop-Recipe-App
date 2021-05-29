@@ -55,4 +55,7 @@ body {
   .display-3 {
     font-size: 3rem !important;
   }
+  h1 {
+    font-size: 2rem !important;
+  }
 }
