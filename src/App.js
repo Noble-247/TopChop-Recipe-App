@@ -7,6 +7,7 @@ import Recipes from "./components/pages/Recipes";
 import SingleRecipesDetails from "./components/pages/SingleRecipesDetails";
 import ErrorPage from "./components/pages/ErrorPage";
 import NavBar from "./components/navigation/NavBar";
+import Footer from "./components/navigation/Footer";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path='*' component={ErrorPage} />
             <Route path='/recipes/*' component={ErrorPage} />
           </Switch>
+          <Footer />
         </main>
       </Router>
     );
