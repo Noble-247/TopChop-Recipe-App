@@ -3,7 +3,7 @@ import SingleRecipe from "./SingleRecipe";
 
 class RecipeList extends Component {
   render() {
-    const { recipes /* loading, errorMessage */ } = this.props;
+    const { recipes } = this.props;
     return (
       <React.Fragment>
         <div className='container py-3'>
