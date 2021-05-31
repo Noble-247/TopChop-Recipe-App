@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Banner from "../navigation/Banner";
 import { Link } from "react-router-dom";
-import Footer from "../navigation/Footer";
 
 class Home extends Component {
   render() {
@@ -12,7 +11,6 @@ class Home extends Component {
             Search Recipes
           </Link>
         </Banner>
-        <Footer />
       </div>
     );
   }

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Banner from "../navigation/Banner";
-import Footer from "../navigation/Footer";
 
 class ErrorPage extends Component {
   render() {
@@ -15,7 +14,6 @@ class ErrorPage extends Component {
             Return to home page
           </Link>
         </Banner>
-        <Footer />
       </div>
     );
   }

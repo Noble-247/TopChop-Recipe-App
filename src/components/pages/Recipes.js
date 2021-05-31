@@ -111,9 +111,7 @@ class Recipes extends Component {
             </h2>
           </div>
         )}
-        <div className='footer-section'>
-          <Footer />
-        </div>
+        <div className='footer-section'>{/* <Footer /> */}</div>
       </React.Fragment>
     );
   }
