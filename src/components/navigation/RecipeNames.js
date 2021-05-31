@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import RecipeNameList from "./RecipeNameList";
+import Spinner from "../utilities_components/Spinner";
 /* "https://a.nacapi.com/recipes" */
 
 class RecipeNames extends Component {
@@ -22,7 +23,7 @@ class RecipeNames extends Component {
       .catch((error) => {
         console.log(error);
         this.setState({
-          errorMessage: "Error: could not popular recipes!",
+          errorMessage: error.message,
           loading: "",
         });
       });
@@ -31,11 +32,7 @@ class RecipeNames extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          {this.state.loading && (
-            <h4 className='text-capitalize text-center'>Loading......</h4>
-          )}
-        </div>
+        <div>{this.state.loading && <Spinner />}</div>
         <div>
           {this.state.recipeNames && (
             <div>
