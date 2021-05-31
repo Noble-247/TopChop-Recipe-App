@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Search from "../utilities_components/Search";
 import RecipeList from "./RecipeList";
 import axios from "axios";
-import Footer from "../navigation/Footer";
 import Sidebar from "../navigation/Sidebar";
 
+import Spinner from "../utilities_components/Spinner";
 class Recipes extends Component {
   constructor(props) {
     super(props);
@@ -80,9 +80,7 @@ class Recipes extends Component {
         </div>
         {this.state.loading && (
           <div className='container my-5'>
-            <h2 className='text-orange text-center text-uppercase'>
-              Loading......
-            </h2>
+            <Spinner />
           </div>
         )}
         {this.state.recipes && (
@@ -111,7 +109,6 @@ class Recipes extends Component {
             </h2>
           </div>
         )}
-        <div className='footer-section'>{/* <Footer /> */}</div>
       </React.Fragment>
     );
   }
