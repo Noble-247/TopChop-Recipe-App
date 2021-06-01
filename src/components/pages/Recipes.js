@@ -67,27 +67,28 @@ class Recipes extends Component {
   }
 
   render() {
+    const { search, errorMessage, searchError, recipes, loading } = this.state;
     return (
       <React.Fragment>
         <div className='container'>
           {/* <small>Hello from recipes page</small> */}
           <Search
-            search={this.state.search}
+            search={search}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             fetchRecipes={this.fetchRecipes}
           />
         </div>
-        {this.state.loading && (
+        {loading && (
           <div className='container my-5'>
             <Spinner />
           </div>
         )}
-        {this.state.recipes && (
+        {recipes && (
           <div className='container my-4'>
             <div className='row'>
               <div className='col-sm-12 col-md-9'>
-                <RecipeList recipes={this.state.recipes} />
+                <RecipeList recipes={recipes} />
               </div>
               <div className='col-sm-12 col-md-3 py-3 mt-5'>
                 <Sidebar />
@@ -95,17 +96,17 @@ class Recipes extends Component {
             </div>
           </div>
         )}
-        {this.state.errorMessage && (
+        {errorMessage && (
           <div className='container my-5'>
             <h2 className='text-danger text-center text-uppercase'>
-              {this.state.errorMessage}
+              {errorMessage}
             </h2>
           </div>
         )}
-        {this.state.searchError && (
+        {searchError && (
           <div className='container my-5'>
             <h2 className='text-danger text-center text-uppercase'>
-              {this.state.searchError}
+              {searchError}
             </h2>
           </div>
         )}
