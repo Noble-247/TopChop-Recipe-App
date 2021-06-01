@@ -26,7 +26,6 @@ class SingleRecipesDetails extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ loading: true });
     axios
       .get(`https://a.nacapi.com/recipes/${this.state.id}`)
       .then((response) => {
@@ -68,7 +67,6 @@ class SingleRecipesDetails extends Component {
 
     return (
       <React.Fragment>
-        {/* <small>hello from recipe No - {id}</small> */}
         {loading && (
           <div className='container my-5'>
             <h2 className='text-uppercase mx-auto text-orange text-center'>
