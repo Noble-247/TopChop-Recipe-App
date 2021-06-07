@@ -58,4 +58,8 @@ body {
   h1 {
     font-size: 2rem !important;
   }
+
+  body {
+    overflow-x: hidden !important;
+  }
 }
