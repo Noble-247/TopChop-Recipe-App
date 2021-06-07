@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Footer from "../navigation/Footer";
 import Sidebar from "../navigation/Sidebar";
+import Spinner from "../utilities_components/Spinner";
 
 class SingleRecipesDetails extends Component {
   constructor(props) {
@@ -65,13 +65,15 @@ class SingleRecipesDetails extends Component {
     const { name, ingredients, steps, imageURL, originalURL } =
       this.state.recipe;
 
+    // const conditionalMarginBottom = {
+    //   marginBottom: (recipe.ingredients = [] ? "29vh" : "0vh"),
+    // };
+
     return (
-      <React.Fragment>
+      <div style={{ marginBottom: "29vh" }}>
         {loading && (
           <div className='container my-5'>
-            <h2 className='text-uppercase mx-auto text-orange text-center'>
-              Loading Recipe Details
-            </h2>
+            <Spinner />
           </div>
         )}
         {recipe && (
@@ -138,10 +140,7 @@ class SingleRecipesDetails extends Component {
             </h2>
           </div>
         )}
-        <div className='footer-section'>
-          <Footer />
-        </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
