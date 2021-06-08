@@ -24,33 +24,13 @@ class Recipes extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { recipes, search } = this.state;
-
-    const filteredData = recipes.filter((recipe) => {
-      return recipe.name.toLowerCase().includes(search.toLowerCase());
-    });
-
-    this.setState({
-      recipes: filteredData, //run the get request again?
-      search: "",
-    });
-  };
-
   fetchRecipes = () => {
     axios
       .get("https://a.nacapi.com/recipes")
       .then((response) => {
         console.log(response);
         console.log(response.data.length);
-        if (response.data.length === 0) {
-          this.setState({
-            searchError: "Sorry, but your search did not return any result",
-          });
-        } else {
-          this.setState({ recipes: response.data, loading: false });
-        }
+        this.setState({ recipes: response.data, loading: false });
       })
       .catch((error) => {
         console.log(error);
@@ -66,8 +46,28 @@ class Recipes extends Component {
     this.fetchRecipes();
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { recipes, search } = this.state;
+
+    const filteredData = recipes.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(search.toLowerCase());
+    });
+
+    if (recipes.name === []) {
+      this.setState({
+        recipes: "Sorry, but your search did not return any result",
+      });
+    } else {
+      this.setState({
+        recipes: filteredData, //run the get request again?
+        search: "",
+      });
+    }
+  };
+
   render() {
-    const { search, errorMessage, searchError, recipes, loading } = this.state;
+    const { search, errorMessage, recipes, loading } = this.state;
     return (
       <React.Fragment>
         <div className='container'>
@@ -100,13 +100,6 @@ class Recipes extends Component {
           <div className='container my-5'>
             <h2 className='text-danger text-center text-uppercase'>
               {errorMessage}
-            </h2>
-          </div>
-        )}
-        {searchError && (
-          <div className='container my-5'>
-            <h2 className='text-danger text-center text-uppercase'>
-              {searchError}
             </h2>
           </div>
         )}
