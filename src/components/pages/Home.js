@@ -2,9 +2,9 @@ import React from "react";
 import Banner from "../navigation/Banner";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+function Home() {
   return (
-    <div className='container-fluid'>
+    <div>
       <Banner title='Amazing Recipes'>
         <Link to='recipes' className='btn btn-secondary btn-lg mt-3'>
           Search Recipes
@@ -12,6 +12,6 @@ const Home = () => {
       </Banner>
     </div>
   );
-};
+}
 
 export default Home;

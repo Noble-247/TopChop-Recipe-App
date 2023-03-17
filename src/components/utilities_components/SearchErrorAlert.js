@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchErrorAlert = ({ alert }) => {
+function SearchErrorAlert({ alert }) {
   return (
     <div>
       alert !== null && (
@@ -9,6 +9,6 @@ const SearchErrorAlert = ({ alert }) => {
       </div>
     </div>
   );
-};
+}
 
 export default SearchErrorAlert;

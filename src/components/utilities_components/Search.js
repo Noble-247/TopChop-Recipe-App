@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Search = ({ handleChange, handleSubmit, fetchRecipes, search }) => {
+function Search({ handleChange, handleSubmit, fetchRecipes, search }) {
   return (
     <div className='container'>
       <div className='row'>
@@ -53,7 +53,7 @@ const Search = ({ handleChange, handleSubmit, fetchRecipes, search }) => {
       </div>
     </div>
   );
-};
+}
 
 Search.propTypes = {
   handleChange: PropTypes.func.isRequired,

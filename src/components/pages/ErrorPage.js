@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Banner from "../navigation/Banner";
 
-const ErrorPage = () => {
+function ErrorPage() {
   return (
     <div className='container-fluid'>
       <Banner title='404' styleClass='error-banner'>
@@ -15,6 +15,6 @@ const ErrorPage = () => {
       </Banner>
     </div>
   );
-};
+}
 
 export default ErrorPage;

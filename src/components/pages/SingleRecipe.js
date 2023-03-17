@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SingleRecipe = ({ recipe: { id, name, imageURL, originalUrl } }) => {
+function SingleRecipe({ recipe: { id, name, imageURL, originalUrl } }) {
   return (
     <div className='col-10 mx-auto col-md-6 col-lg-4 my-3'>
       <div className='card' style={{ height: "100%" }}>
@@ -33,6 +33,6 @@ const SingleRecipe = ({ recipe: { id, name, imageURL, originalUrl } }) => {
       </div>
     </div>
   );
-};
+}
 
 export default SingleRecipe;

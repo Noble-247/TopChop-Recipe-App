@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Banner = ({ children, title, styleClass }) => {
+function Banner({ children, title, styleClass }) {
   return (
     <section>
       <div className='container-fluid'>
@@ -16,7 +16,7 @@ const Banner = ({ children, title, styleClass }) => {
       </div>
     </section>
   );
-};
+}
 
 Banner.propTypes = {
   title: PropTypes.string.isRequired,

@@ -1,9 +1,9 @@
-import React from "react";
+import { Fragment } from "react";
 import SingleRecipe from "./SingleRecipe";
 
-const RecipeList = ({ recipes }) => {
+function RecipeList({ recipes }) {
   return (
-    <React.Fragment>
+    <Fragment>
       <div className='container py-3'>
         {/* Title */}
         <div className='col-10 mx-auto col-md-6 text-center text-uppercase mb-3'>
@@ -16,8 +16,8 @@ const RecipeList = ({ recipes }) => {
           ))}
         </div>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
-};
+}
 
 export default RecipeList;

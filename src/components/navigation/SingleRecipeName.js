@@ -1,13 +1,13 @@
-import React from "react";
+import { Fragment } from "react";
 
-const SingleRecipeName = ({ recipeName: { id, name } }) => {
+function SingleRecipeName({ recipeName: { id, name } }) {
   return (
-    <React.Fragment>
+    <Fragment>
       <li className='list-group-item'>
         {id} {"=>"} {name}
       </li>
-    </React.Fragment>
+    </Fragment>
   );
-};
+}
 
 export default SingleRecipeName;
