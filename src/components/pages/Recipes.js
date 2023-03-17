@@ -1,111 +1,92 @@
-import React, { Component } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Search from "../utilities_components/Search";
 import RecipeList from "./RecipeList";
 import axios from "axios";
 import Sidebar from "../navigation/Sidebar";
-
 import Spinner from "../utilities_components/Spinner";
-class Recipes extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      recipes: [],
-      errorMessage: "",
-      search: "",
-      searchError: "",
-      loading: true,
-    };
+function Recipes() {
+  const [recipes, setRecipes] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [search, setSearch] = useState("");
+  /*  const [searchError, setSearchError] = useState(""); */
+  const [loading, setLoading] = useState(true);
+
+  function handleChange(event) {
+    setSearch(event.target.value);
   }
 
-  handleChange = (event) => {
-    this.setState({
-      search: event.target.value,
-    });
-  };
-
-  fetchRecipes = () => {
+  function fetchRecipes() {
     axios
       .get("https://a.nacapi.com/recipes")
       .then((response) => {
         console.log(response);
         console.log(response.data.length);
-        this.setState({ recipes: response.data, loading: false });
+        setRecipes(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
-        this.setState({
-          loading: false,
-          errorMessage: error.message,
-        });
+        setLoading(false);
+        setErrorMessage(error.message);
       });
-  };
-
-  componentDidMount() {
-    // this.setState({ loading: true });
-    this.fetchRecipes();
   }
 
-  handleSubmit = (event) => {
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
+
+  function handleSubmit(event) {
     event.preventDefault();
-    const { recipes, search } = this.state;
 
     const filteredData = recipes.filter((recipe) => {
       return recipe.name.toLowerCase().includes(search.toLowerCase());
     });
 
     if (recipes.name === []) {
-      this.setState({
-        recipes: "Sorry, but your search did not return any result",
-      });
+      setRecipes("Sorry, but your search did not return any result");
     } else {
-      this.setState({
-        recipes: filteredData, //run the get request again?
-        search: "",
-      });
+      setRecipes(...filteredData);
     }
-  };
+  }
 
-  render() {
-    const { search, errorMessage, recipes, loading } = this.state;
-    return (
-      <React.Fragment>
-        <div className='container'>
-          {/* <small>Hello from recipes page</small> */}
-          <Search
-            search={search}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            fetchRecipes={this.fetchRecipes}
-          />
+  return (
+    <Fragment>
+      <div className='container'>
+        {/* <small>Hello from recipes page</small> */}
+        <Search
+          search={search}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          fetchRecipes={fetchRecipes}
+        />
+      </div>
+      {loading && (
+        <div className='container my-5'>
+          <Spinner />
         </div>
-        {loading && (
-          <div className='container my-5'>
-            <Spinner />
-          </div>
-        )}
-        {recipes && (
-          <div className='container my-4'>
-            <div className='row'>
-              <div className='col-sm-12 col-md-9'>
-                <RecipeList recipes={recipes} />
-              </div>
-              <div className='col-sm-12 col-md-3 py-3 mt-5'>
-                <Sidebar />
-              </div>
+      )}
+      {recipes && (
+        <div className='container my-4'>
+          <div className='row'>
+            <div className='col-sm-12 col-md-9'>
+              <RecipeList recipes={recipes} />
+            </div>
+            <div className='col-sm-12 col-md-3 py-3 mt-5'>
+              <Sidebar />
             </div>
           </div>
-        )}
-        {errorMessage && (
-          <div className='container my-5'>
-            <h2 className='text-danger text-center text-uppercase'>
-              {errorMessage}
-            </h2>
-          </div>
-        )}
-      </React.Fragment>
-    );
-  }
+        </div>
+      )}
+      {errorMessage && (
+        <div className='container my-5'>
+          <h2 className='text-danger text-center text-uppercase'>
+            {errorMessage}
+          </h2>
+        </div>
+      )}
+    </Fragment>
+  );
 }
 
 export default Recipes;
